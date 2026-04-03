@@ -8,5 +8,6 @@
 
 void limpar_buffer_entrada();
 void tentar_novamente();
+void limpar_console();
 
 #endif //SISTEMA_CADASTRO_DE_PACIENTES_UTILS_H
