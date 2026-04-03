@@ -7,5 +7,6 @@
 #define SISTEMA_CADASTRO_DE_PACIENTES_UTILS_H
 
 void limpar_buffer_entrada();
+void tentar_novamente();
 
 #endif //SISTEMA_CADASTRO_DE_PACIENTES_UTILS_H
