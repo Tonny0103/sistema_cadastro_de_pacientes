@@ -4,7 +4,7 @@
 
 int cpf_somente_digitos(const char* cpf) {
     int i = 0;
-    while (cpf[i] == '\0') {
+    while (cpf[i] != '\0') {
         if (cpf[i] < '0' || cpf[i] > '9') return 0;
         i++;
     }
@@ -63,7 +63,7 @@ int validar_cpf(const char* cpf) {
 
     int todos_os_digitos_iguais = todos_digitos_iguais(cpf);
     if (todos_os_digitos_iguais) {
-        printf("Erro 3 - Todos os digitos do CPF inserido são iguais!\n");
+        printf("Erro 3 - Todos os digitos do CPF inserido sao iguais!\n");
         return 0;
     }
 
@@ -71,7 +71,7 @@ int validar_cpf(const char* cpf) {
     int segundo_digito_valido = verificar_segundo_digito_verificador(cpf);
 
     if (!primeiro_digito_valido || !segundo_digito_valido) {
-        printf("Erro 3 - Digitos verificadores do CPF inválidos!\n");
+        printf("Erro 3 - Digitos verificadores do CPF invalidos!\n");
         return 0;
     }
 
