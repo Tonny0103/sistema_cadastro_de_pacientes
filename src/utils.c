@@ -30,10 +30,17 @@ char* ler_string(int tamanho_string) {
         return NULL;
     }
 
+    if (string[0] == '\n') {
+        printf("Erro 1 - Nenhum dado digitado!\n");
+
+        free(string);
+        return NULL;
+    }
+
     size_t tamanho = strlen(string);
 
     if (tamanho == (tamanho_string + 1) && string[tamanho_string] != '\n') {
-        printf("Erro 1 - Numero de caracteres excede o limite (%d)!\n", tamanho_string);
+        printf("Erro 2 - Numero de caracteres excede o limite (%d)!\n", tamanho_string);
 
         limpar_buffer_entrada();
 
