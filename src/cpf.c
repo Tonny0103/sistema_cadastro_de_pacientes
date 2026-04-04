@@ -1,5 +1,7 @@
 #include "../include/cpf.h"
 
+#include <stdio.h>
+
 int cpf_somente_digitos(const char* cpf) {
     int i = 0;
     while (cpf[i] == '\0') {
@@ -50,4 +52,28 @@ int verificar_segundo_digito_verificador(const char* cpf) {
     int digito_verificador = (resto == 0 || resto == 1) ? 0 : 11 - resto;
 
     return (cpf[10] == digito_verificador);
+}
+
+int validar_cpf(const char* cpf) {
+    int somente_digitos = cpf_somente_digitos(cpf);
+    if (!somente_digitos) {
+        printf("Erro 3 - Digite apenas os digitos do CPF!\n");
+        return 0;
+    }
+
+    int todos_os_digitos_iguais = todos_digitos_iguais(cpf);
+    if (todos_os_digitos_iguais) {
+        printf("Erro 3 - Todos os digitos do CPF inserido são iguais!\n");
+        return 0;
+    }
+
+    int primeiro_digito_valido = verificar_primeiro_digito_verificador(cpf);
+    int segundo_digito_valido = verificar_segundo_digito_verificador(cpf);
+
+    if (!primeiro_digito_valido || !segundo_digito_valido) {
+        printf("Erro 3 - Digitos verificadores do CPF inválidos!\n");
+        return 0;
+    }
+
+    return 1;
 }
