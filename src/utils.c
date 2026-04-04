@@ -45,3 +45,9 @@ char* ler_string(int tamanho_string) {
 
     return string;
 }
+
+void imprimir_titulo(char* titulo) {
+    printf("========================================\n");
+    printf("%s\n", titulo);
+    printf("========================================\n");
+}
