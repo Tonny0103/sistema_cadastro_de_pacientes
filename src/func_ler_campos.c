@@ -29,9 +29,10 @@ char* ler_cpf_paciente() {
 
         printf("Digite o CPF do paciente (somente os digitos): \n");
         cpf = ler_string(TAM_CPF_PACIENTE);
-        if (cpf == NULL) tentar_novamente();
 
-        if (!validar_cpf(cpf)) tentar_novamente(); else cpf_valido = 1;
+        cpf_valido = cpf != NULL && validar_cpf(cpf);
+
+        if (cpf == NULL || !cpf_valido) tentar_novamente();
     }
 
     return cpf;
