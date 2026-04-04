@@ -9,5 +9,6 @@
 void limpar_buffer_entrada();
 void tentar_novamente();
 void limpar_console();
+char* ler_string(int tamanho_string);
 
 #endif //SISTEMA_CADASTRO_DE_PACIENTES_UTILS_H
