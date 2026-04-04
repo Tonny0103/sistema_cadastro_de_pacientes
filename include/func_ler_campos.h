@@ -6,6 +6,8 @@
 #define SISTEMA_CADASTRO_DE_PACIENTES_FUNC_LER_CAMPOS_H
 #include <time.h>
 
+#define TAM_NOME_PACIENTE 40
+
 char* ler_nome_paciente();
 char* ler_cpf_paciente();
 int ler_origem_paciente();
