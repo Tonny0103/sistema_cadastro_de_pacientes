@@ -29,14 +29,15 @@ int verificar_primeiro_digito_verificador(const char* cpf) {
     int multiplicador = 10;
 
     for (int i = 0; i < 9; i++) {
-        soma += cpf[i] * multiplicador;
+        int valor_numero = cpf[i] - '0';
+        soma += valor_numero * multiplicador;
         multiplicador--;
     }
 
     int resto = soma % 11;
     int digito_verificador = (resto == 0 || resto == 1) ? 0 : 11 - resto;
 
-    return (cpf[9] == digito_verificador);
+    return ((cpf[9] - '0') == digito_verificador);
 }
 
 int verificar_segundo_digito_verificador(const char* cpf) {
@@ -44,14 +45,15 @@ int verificar_segundo_digito_verificador(const char* cpf) {
     int multiplicador = 11;
 
     for (int i = 0; i < 10; i++) {
-        soma += cpf[i] * multiplicador;
+        int valor_numero = cpf[i] - '0';
+        soma += valor_numero * multiplicador;
         multiplicador--;
     }
 
     int resto = soma % 11;
     int digito_verificador = (resto == 0 || resto == 1) ? 0 : 11 - resto;
 
-    return (cpf[10] == digito_verificador);
+    return ((cpf[10] - '0') == digito_verificador);
 }
 
 int validar_cpf(const char* cpf) {
