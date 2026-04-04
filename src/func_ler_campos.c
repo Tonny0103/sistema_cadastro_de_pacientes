@@ -33,4 +33,6 @@ char* ler_cpf_paciente() {
 
         if (!validar_cpf(cpf)) tentar_novamente(); else cpf_valido = 1;
     }
+
+    return cpf;
 }
