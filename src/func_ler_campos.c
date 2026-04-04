@@ -37,3 +37,33 @@ char* ler_cpf_paciente() {
 
     return cpf;
 }
+
+int ler_origem_paciente() {
+    int origem = 0;
+    int resultado = 0;
+
+    while (resultado != 1 || origem < 1 || origem > 4) {
+        limpar_console();
+        imprimir_titulo("CADASTRAR PACIENTE");
+
+        printf("Selecione a origem do paciente: \n");
+        printf("1 - Sistema publico\n");
+        printf("2 - Sistema privado\n");
+        printf("3 - Plano de saude\n");
+        printf("4 - Outros convenios\n");
+
+        resultado = scanf("%d", &origem);
+
+        if (resultado != 1) {
+            printf("Erro 4 - Entrada invalida!\n");
+            limpar_buffer_entrada();
+            tentar_novamente();
+        } else if (origem < 1 || origem > 4) {
+            printf("Erro 5 - Digite uma opcao valida!\n");
+            limpar_buffer_entrada();
+            tentar_novamente();
+        }
+    }
+
+    return origem;
+}
