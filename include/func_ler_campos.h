@@ -7,6 +7,7 @@
 #include <time.h>
 
 #define TAM_NOME_PACIENTE 40
+#define TAM_CPF_PACIENTE 11
 
 char* ler_nome_paciente();
 char* ler_cpf_paciente();
