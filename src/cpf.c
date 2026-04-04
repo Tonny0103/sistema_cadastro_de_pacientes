@@ -36,3 +36,18 @@ int verificar_primeiro_digito_verificador(const char* cpf) {
 
     return (cpf[9] == digito_verificador);
 }
+
+int verificar_segundo_digito_verificador(const char* cpf) {
+    int soma = 0;
+    int multiplicador = 11;
+
+    for (int i = 0; i < 10; i++) {
+        soma += cpf[i] * multiplicador;
+        multiplicador--;
+    }
+
+    int resto = soma % 11;
+    int digito_verificador = (resto == 0 || resto == 1) ? 0 : 11 - resto;
+
+    return (cpf[10] == digito_verificador);
+}
