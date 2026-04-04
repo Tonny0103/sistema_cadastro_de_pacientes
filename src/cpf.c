@@ -21,3 +21,18 @@ int todos_digitos_iguais(const char* cpf) {
 
     return (contador == i - 1);
 }
+
+int verificar_primeiro_digito_verificador(const char* cpf) {
+    int soma = 0;
+    int multiplicador = 10;
+
+    for (int i = 0; i < 9; i++) {
+        soma += cpf[i] * multiplicador;
+        multiplicador--;
+    }
+
+    int resto = soma % 11;
+    int digito_verificador = (resto == 0 || resto == 1) ? 0 : 11 - resto;
+
+    return (cpf[9] == digito_verificador);
+}
