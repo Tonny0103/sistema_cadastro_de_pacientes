@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 void limpar_buffer_entrada() {
     int c;
@@ -57,4 +58,10 @@ void imprimir_titulo(char* titulo) {
     printf("========================================\n");
     printf("%s\n", titulo);
     printf("========================================\n");
+}
+
+char* converte_data_para_string(struct tm* data) {
+    char* data_formatada = (char*) malloc(20 * sizeof(char));
+    strftime(data_formatada, 20, "%d/%m/%Y %H:%M", data);
+    return data_formatada;
 }
