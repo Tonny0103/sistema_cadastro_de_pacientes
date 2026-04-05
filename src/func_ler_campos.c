@@ -96,6 +96,8 @@ struct tm* ler_data_entrada_paciente() {
         if (data_entrada != -1) data_valida = 1;
     }
 
+    limpar_buffer_entrada();
+
     struct tm* data_entrada_formatada = localtime(&data_entrada);
 
     return data_entrada_formatada;
