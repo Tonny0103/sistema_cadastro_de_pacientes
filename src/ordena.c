@@ -4,7 +4,7 @@
 
 #include "../include/utils.h"
 
-void troca(t_paciente* pacientes, t_comparar comparar) {
+void ordena_por_troca(t_paciente* pacientes, t_comparar comparar) {
     int quantidade_registros = obter_quantidade_de_registros();
 
     int i, j;
