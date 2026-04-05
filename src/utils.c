@@ -159,3 +159,20 @@ char* obtem_origem_registrada(int origem) {
 
     return origem_string;
 }
+
+void printar_dados_paciente(t_paciente paciente) {
+    char *data_entrada = converte_data_para_string(paciente.data_entrada);
+    char *origem = obtem_origem_registrada(paciente.origem);
+
+    printf("|%d|\t |%s|\t |%s|\t |%s|\t |%s|\t |%s|\t |%s|\n",
+        paciente.id,
+        paciente.nome,
+        paciente.cpf,
+        origem,
+        data_entrada,
+        paciente.nome_medico,
+        paciente.observacao_inicial);
+
+    free(data_entrada);
+    free(origem);
+}
