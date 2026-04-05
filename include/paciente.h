@@ -11,7 +11,7 @@ typedef struct {
     char* nome;
     char* cpf;
     int origem; // 1 - Sistema público; 2 - Sistema privado; 3 - Plano de saúde; 4 - Outros convênios
-    time_t data_entrada;
+    struct tm* data_entrada;
     char* nome_medico;
     char* observacao_inicial;
 } t_paciente;
