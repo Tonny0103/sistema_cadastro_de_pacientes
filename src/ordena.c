@@ -24,7 +24,7 @@ void merge(t_paciente* pacientes, int inicio, int meio, int fim, t_comparar comp
     t_paciente* vetAux = (t_paciente*) malloc(tam * sizeof(t_paciente));
 
     while (com1 <= meio && com2 <= fim) {
-        if (comparar(pacientes[com1], pacientes[com2]) <= 0) {  // <= 0 em vez de
+        if (comparar(pacientes[com1], pacientes[com2]) <= 0) {
             vetAux[comAux] = pacientes[com1];
             com1++;
         } else {
