@@ -146,3 +146,16 @@ t_paciente* ler_registros() {
     fclose(arquivo);
     return pacientes;
 }
+
+char* obtem_origem_registrada(int origem) {
+    char* origem_string = (char*) malloc(30 * sizeof(char));
+
+    switch (origem) {
+        case 1: sprintf(origem_string, "Sistema publico"); break;
+        case 2: sprintf(origem_string, "Sistema privado"); break;
+        case 3: sprintf(origem_string, "Plano de saude"); break;
+        case 4: sprintf(origem_string, "Outros convenios"); break;
+    }
+
+    return origem_string;
+}

@@ -20,5 +20,6 @@ int proximo_id();
 struct tm* ler_data_entrada_resgistro(char* token);
 int obter_quantidade_de_registros();
 t_paciente* ler_registros();
+char* obtem_origem_registrada(int origem);
 
 #endif //SISTEMA_CADASTRO_DE_PACIENTES_UTILS_H
