@@ -14,7 +14,7 @@ void cadastrar_paciente() {
     t_paciente paciente;
     paciente.id = proximo_id();
 
-    if (paciente.id > 100) {
+    if (paciente.id > TAM_MAX_REGISTROS) {
         printf("Número de pacientes máximo cadastrados!\n");
         return;
     }

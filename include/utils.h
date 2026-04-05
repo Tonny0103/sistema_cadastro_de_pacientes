@@ -7,6 +7,7 @@
 #define SISTEMA_CADASTRO_DE_PACIENTES_UTILS_H
 #include <time.h>
 #include "paciente.h"
+#define TAM_MAX_REGISTROS 100
 
 void limpar_buffer_entrada();
 void tentar_novamente();
@@ -16,5 +17,7 @@ void imprimir_titulo(char* titulo);
 char* converte_data_para_string(struct tm* data);
 void limpa_registro_da_memoria(t_paciente paciente);
 int proximo_id();
+struct tm* ler_data_entrada_resgistro(char* token);
+t_paciente* ler_registros();
 
 #endif //SISTEMA_CADASTRO_DE_PACIENTES_UTILS_H

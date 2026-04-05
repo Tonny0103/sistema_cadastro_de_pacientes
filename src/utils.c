@@ -69,6 +69,7 @@ char* converte_data_para_string(struct tm* data) {
 void limpa_registro_da_memoria(t_paciente paciente) {
     free(paciente.nome);
     free(paciente.cpf);
+    free(paciente.data_entrada);
     free(paciente.nome_medico);
     free(paciente.observacao_inicial);
 }
@@ -89,4 +90,55 @@ int proximo_id() {
 
     fclose(arquivo);
     return id + 1;
+}
+
+struct tm* ler_data_entrada_resgistro(char* token) {
+    struct tm* data = (struct tm*) malloc(sizeof(struct tm));
+    sscanf(token, "%d/%d/%d %d:%d", &data->tm_mday, &data->tm_mon, &data->tm_year, &data->tm_hour, &data->tm_min);
+    data->tm_year -= 1900;
+    data->tm_mon -= 1;
+    data->tm_sec = 0;
+    data->tm_isdst = -1;
+    return data;
+}
+
+t_paciente* ler_registros() {
+    FILE *arquivo = fopen("pacientes.csv", "r");
+
+    int quantidade_registros = proximo_id() - 1;
+    t_paciente* pacientes = (t_paciente*) malloc(quantidade_registros * sizeof(t_paciente));
+
+    char linha[256];
+    int i = 0;
+    while (fgets(linha, sizeof(linha), arquivo) && i < quantidade_registros) {
+        linha[strcspn(linha, "\n")] = '\0';
+
+        t_paciente paciente;
+        char* token = strtok(linha, ",");
+        paciente.id = atoi(token);
+
+        token = strtok(NULL, ",");
+        paciente.nome = strdup(token);
+
+        token = strtok(NULL, ",");
+        paciente.cpf = strdup(token);
+
+        token = strtok(NULL, ",");
+        paciente.origem = atoi(token);
+
+        token = strtok(NULL, ",");
+        paciente.data_entrada = ler_data_entrada_resgistro(token);
+
+        token = strtok(NULL, ",");
+        paciente.nome_medico = strdup(token);
+
+        token = strtok(NULL, ",");
+        paciente.observacao_inicial = strdup(token);
+
+        pacientes[i] = paciente;
+        i++;
+    }
+
+    fclose(arquivo);
+    return pacientes;
 }
