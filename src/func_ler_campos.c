@@ -76,6 +76,8 @@ struct tm* ler_data_entrada_paciente() {
 
     while (data_valida != 1) {
         limpar_console();
+        imprimir_titulo("CADASTRAR PACIENTE");
+
         printf("Digite a data de entrada do paciente (dd/mm/aaaa hh:mm): \n");
         scanf("%d/%d/%d %d:%d", &dia, &mes, &ano, &hora, &minuto);
         data.tm_year = ano - 1900;
