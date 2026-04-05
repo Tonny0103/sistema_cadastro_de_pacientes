@@ -67,3 +67,36 @@ int ler_origem_paciente() {
 
     return origem;
 }
+
+struct tm* ler_data_entrada_paciente() {
+    struct tm data;
+    time_t data_entrada = 0;
+    int dia, mes, ano, hora, minuto;
+    int data_valida = 0;
+
+    while (data_valida != 1) {
+        limpar_console();
+        printf("Digite a data de entrada do paciente (dd/mm/aaaa hh:mm): \n");
+        scanf("%d/%d/%d %d:%d", &dia, &mes, &ano, &hora, &minuto);
+        data.tm_year = ano - 1900;
+        data.tm_mon = mes - 1;
+        data.tm_mday = dia;
+        data.tm_hour = hora;
+        data.tm_min = minuto;
+        data.tm_sec = 0;
+        data.tm_isdst = -1;
+        data_entrada = mktime(&data);
+
+        if (data_entrada == -1) {
+            printf("Erro 5 - Data de entrada do paciente invalida!\n");
+            limpar_buffer_entrada();
+            tentar_novamente();
+        }
+
+        if (data_entrada != -1) data_valida = 1;
+    }
+
+    struct tm* data_entrada_formatada = localtime(&data_entrada);
+
+    return data_entrada_formatada;
+}

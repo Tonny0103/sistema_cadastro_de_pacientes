@@ -12,7 +12,7 @@
 char* ler_nome_paciente();
 char* ler_cpf_paciente();
 int ler_origem_paciente();
-time_t ler_data_entrada_paciente();
+struct tm* ler_data_entrada_paciente();
 char* ler_nome_medico_paciente();
 char* ler_observacao_inicial_paciente();
 
