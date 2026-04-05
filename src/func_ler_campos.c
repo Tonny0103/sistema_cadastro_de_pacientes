@@ -114,3 +114,17 @@ char* ler_nome_medico_paciente() {
 
     return nome_medico;
 }
+
+char* ler_observacao_inicial_paciente() {
+    char* observacao_inicial = NULL;
+
+    while (observacao_inicial == NULL) {
+        limpar_console();
+        imprimir_titulo("CADASTRAR PACIENTE");
+        printf("Digite a observacao inicial do paciente: \n");
+        observacao_inicial = ler_string(TAM_OBSERVACAO_INICIAL);
+        if (observacao_inicial == NULL) tentar_novamente();
+    }
+
+    return observacao_inicial;
+}
