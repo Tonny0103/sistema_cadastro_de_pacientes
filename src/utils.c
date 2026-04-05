@@ -65,3 +65,10 @@ char* converte_data_para_string(struct tm* data) {
     strftime(data_formatada, 20, "%d/%m/%Y %H:%M", data);
     return data_formatada;
 }
+
+void limpa_registro_da_memoria(t_paciente paciente) {
+    free(paciente.nome);
+    free(paciente.cpf);
+    free(paciente.nome_medico);
+    free(paciente.observacao_inicial);
+}
