@@ -102,10 +102,14 @@ struct tm* ler_data_entrada_resgistro(char* token) {
     return data;
 }
 
+int obter_quantidade_de_registros() {
+    return proximo_id() - 1;
+}
+
 t_paciente* ler_registros() {
     FILE *arquivo = fopen("pacientes.csv", "r");
 
-    int quantidade_registros = proximo_id() - 1;
+    int quantidade_registros = obter_quantidade_de_registros();
     t_paciente* pacientes = (t_paciente*) malloc(quantidade_registros * sizeof(t_paciente));
 
     char linha[256];
