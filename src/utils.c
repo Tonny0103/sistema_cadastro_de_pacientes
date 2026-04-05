@@ -72,3 +72,21 @@ void limpa_registro_da_memoria(t_paciente paciente) {
     free(paciente.nome_medico);
     free(paciente.observacao_inicial);
 }
+
+int proximo_id() {
+    FILE *arquivo = fopen("/data/pacientes.csv", "r");
+
+    int id = 0;
+    char linha[256];
+
+    while (fgets(linha, 256, arquivo)) {
+        linha[strcspn(linha, "\n")] = '\0';
+
+        char* tokens = strtok(linha, ",");
+        int temp = atoi(tokens);
+        id = temp;
+    }
+
+    fclose(arquivo);
+    return id + 1;
+}

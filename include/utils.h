@@ -15,5 +15,6 @@ char* ler_string(int tamanho_string);
 void imprimir_titulo(char* titulo);
 char* converte_data_para_string(struct tm* data);
 void limpa_registro_da_memoria(t_paciente paciente);
+int proximo_id();
 
 #endif //SISTEMA_CADASTRO_DE_PACIENTES_UTILS_H
