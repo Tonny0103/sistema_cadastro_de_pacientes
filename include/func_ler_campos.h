@@ -8,6 +8,8 @@
 
 #define TAM_NOME_PACIENTE 40
 #define TAM_CPF_PACIENTE 11
+#define TAM_NOME_MEDICO 40
+#define TAM_OBSERVACAO_INICIAL 512
 
 char* ler_nome_paciente();
 char* ler_cpf_paciente();

@@ -100,3 +100,17 @@ struct tm* ler_data_entrada_paciente() {
 
     return data_entrada_formatada;
 }
+
+char* ler_nome_medico_paciente() {
+    char* nome_medico = NULL;
+
+    while (nome_medico == NULL) {
+        limpar_console();
+        imprimir_titulo("CADASTRAR PACIENTE");
+        printf("Digite o nome do medico: \n");
+        nome_medico = ler_string(TAM_NOME_MEDICO);
+        if (nome_medico == NULL) tentar_novamente();
+    }
+
+    return nome_medico;
+}
