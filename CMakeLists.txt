@@ -11,4 +11,17 @@ add_executable(sistema_cadastro_de_pacientes src/main.c
         include/utils.h
         src/utils.c
         include/cpf.h
-        src/cpf.c)
+        src/cpf.c
+        include/menu.h
+        src/menu.c
+        include/listagem.h
+        src/listagem.c
+        include/ordena.h
+        src/ordena.c
+        include/comparar.h
+        src/comparar.c
+        include/busca.h
+        src/busca.c
+        include/metodo_busca.h
+        src/metodo_busca.c
+)
