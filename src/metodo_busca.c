@@ -9,16 +9,16 @@ t_paciente* busca_linear(t_paciente* pacientes, int n, t_paciente alvo, t_compar
     return NULL;
 }
 
-int busca_binaria(t_paciente* pacientes, int esquerda, int direita, t_paciente alvo, t_comparar comparar) {
+t_paciente* busca_binaria(t_paciente* pacientes, int esquerda, int direita, t_paciente alvo, t_comparar comparar) {
     if (esquerda > direita) {
-        return -1;
+        return NULL;
     }
 
     int meio = (esquerda + direita) / 2;
     int resultado = comparar(pacientes[meio], alvo);
 
     if (resultado == 0) {
-        return meio;
+        return &pacientes[meio];
     } else if (resultado < 0) {
         return busca_binaria(pacientes, meio + 1, direita, alvo, comparar);
     } else {
