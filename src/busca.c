@@ -7,9 +7,7 @@
 #include "../include/menu.h"
 #include "../include/metodo_busca.h"
 
-void buscar_por_nome() {
-    t_paciente* registros = ler_registros();
-
+void buscar_por_nome(t_paciente* registros) {
     limpar_buffer_entrada();
     limpar_console();
 
@@ -42,9 +40,7 @@ void buscar_por_nome() {
     printar_dados_paciente(*resultado);
 }
 
-void buscar_por_cpf() {
-    t_paciente* registros = ler_registros();
-
+void buscar_por_cpf(t_paciente* registros) {
     limpar_buffer_entrada();
     limpar_console();
 
@@ -77,9 +73,7 @@ void buscar_por_cpf() {
     printar_dados_paciente(*resultado);
 }
 
-void buscar_por_medico() {
-    t_paciente* registros = ler_registros();
-
+void buscar_por_medico(t_paciente* registros) {
     limpar_buffer_entrada();
     limpar_console();
 
