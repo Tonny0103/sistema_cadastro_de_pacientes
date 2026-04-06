@@ -8,6 +8,7 @@
 
 void buscar_por_nome(t_paciente* registros, int metodo_busca);
 void buscar_por_cpf(t_paciente* registros, int metodo_busca);
-void buscar_por_medico(t_paciente* registros, int metodo_busca);
+void buscar_por_medico(t_paciente* registros);
+void buscar_todos_por_medico(t_paciente* registros, int n, char* nome_medico);
 
 #endif //SISTEMA_CADASTRO_DE_PACIENTES_BUSCA_H

@@ -36,13 +36,19 @@ int comparar_medico_paciente_crescente(t_paciente a, t_paciente b) {
 }
 
 int comparar_nomes_iguais(t_paciente a, t_paciente b) {
-    return strcmp(a.nome, b.nome) == 0;
+    if (strcmp(a.nome, b.nome) == 0) {
+        return 1;
+    }
+    return 0;
 }
 
 int comparar_nome_medico_igual(t_paciente a, t_paciente b) {
-    return strcmp(a.nome_medico, b.nome_medico) == 0;
+    if (strcmp(a.nome_medico, b.nome_medico) == 0) {
+        return 1;
+    }
+    return 0;
 }
 
 int comparar_cpf_paciente(t_paciente a, t_paciente b) {
-    return strcmp(a.cpf, b.cpf) == 0;
+    return strcmp(a.cpf, b.cpf);
 }

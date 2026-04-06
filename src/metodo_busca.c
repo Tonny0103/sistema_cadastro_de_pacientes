@@ -1,9 +1,14 @@
 #include "../include/metodo_busca.h"
 
+#include <stdio.h>
+
 t_paciente* busca_linear(t_paciente* pacientes, int n, t_paciente alvo, t_comparar comparar) {
     for (int i = 0; i < n; i++) {
-        if (comparar(pacientes[i], alvo) == 0)
+        printf("%s\n", pacientes[i].cpf);
+        printf("%d\n", comparar(pacientes[i], alvo));
+        if (comparar(pacientes[i], alvo)) {
             return &pacientes[i];
+        }
     }
 
     return NULL;

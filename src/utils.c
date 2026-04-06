@@ -75,7 +75,7 @@ void limpa_registro_da_memoria(t_paciente paciente) {
 }
 
 int proximo_id() {
-    FILE *arquivo = fopen("/data/pacientes.csv", "r");
+    FILE *arquivo = fopen("pacientes.csv", "r");
 
     int id = 0;
     char linha[256];
@@ -107,7 +107,7 @@ int obter_quantidade_de_registros() {
 }
 
 t_paciente* ler_registros() {
-    FILE *arquivo = fopen("pacientes.csv", "r");
+    FILE *arquivo = fopen("pacientes.csv", "r+");
 
     int quantidade_registros = obter_quantidade_de_registros();
     t_paciente* pacientes = (t_paciente*) malloc(quantidade_registros * sizeof(t_paciente));
@@ -164,7 +164,7 @@ void printar_dados_paciente(t_paciente paciente) {
     char *data_entrada = converte_data_para_string(paciente.data_entrada);
     char *origem = obtem_origem_registrada(paciente.origem);
 
-    printf("|%d|\t |%s|\t |%s|\t |%s|\t |%s|\t |%s|\t |%s|\n",
+    printf("|%d|\t |%s|\t |%s|\t\t |%s|\t\t |%s|\t\t |%s|\t\t |%s|\n",
         paciente.id,
         paciente.nome,
         paciente.cpf,

@@ -10,7 +10,10 @@
 #include "../include/utils.h"
 #include "../include/menu.h"
 
+#include <stdlib.h>
+
 void menu_cadastrar_paciente() {
+    limpar_buffer_entrada();
     cadastrar_paciente();
     printf("Paciente cadastrado com sucesso!\n");
     printf("Pressione qualquer tecla para continuar...");
@@ -49,6 +52,7 @@ int menu_ordenacao(char* titulo) {
 }
 
 int menu_busca(char* titulo) {
+    limpar_buffer_entrada();
     int opcao_busca = 0;
     int termina = 0;
 
@@ -60,6 +64,7 @@ int menu_busca(char* titulo) {
         printf("Qual metodo de ordenacao deseja utilizar?\n");
         printf("1 - Busca linear\n");
         printf("2 - Busca binaria\n");
+
         int retorno = scanf("%d", &opcao_busca);
 
         if (retorno != 1) {
@@ -68,12 +73,14 @@ int menu_busca(char* titulo) {
             continue;
         }
 
+        limpar_buffer_entrada();
+
         if (opcao_busca < 1 || opcao_busca > 2) {
             printf("Opcao invalida!\n");
-            limpar_buffer_entrada();
-        } else {
-            termina = 1;
+            continue;
         }
+
+        termina = 1;
     }
 
     return opcao_busca;
@@ -85,7 +92,6 @@ void menu_listar_pacientes() {
     int termina = 0;
 
     while (!termina) {
-        limpar_buffer_entrada();
         limpar_console();
         imprimir_titulo("Listagem de Pacientes");
 
@@ -106,22 +112,38 @@ void menu_listar_pacientes() {
             continue;
         }
 
-        limpar_buffer_entrada();
         limpar_console();
         imprimir_titulo("Listagem de Pacientes");
 
-        int opcao_ordenacao = menu_ordenacao("Listagem de Pacientes");
+        int opcao_ordenacao = 0;
 
         switch (opcao_listagem) {
-            case 1: listar_por_ordem_alfabetica_crescente(pacientes, opcao_ordenacao); break;
-            case 2: listar_por_ordem_alfabetica_decrescente(pacientes, opcao_ordenacao); break;
-            case 3: listar_por_origem_nome_crescente(pacientes, opcao_ordenacao); break;
-            case 4: listar_por_data_entrada_decrescente(pacientes, opcao_ordenacao); break;
-            case 5: listar_por_medico_paciente_crescente(pacientes, opcao_ordenacao); break;
+            case 1:
+                opcao_ordenacao = menu_ordenacao("Listagem de Pacientes");
+                listar_por_ordem_alfabetica_crescente(pacientes, opcao_ordenacao);
+                break;
+            case 2:
+                opcao_ordenacao = menu_ordenacao("Listagem de Pacientes");
+                listar_por_ordem_alfabetica_decrescente(pacientes, opcao_ordenacao);
+                break;
+            case 3:
+                opcao_ordenacao = menu_ordenacao("Listagem de Pacientes");
+                listar_por_origem_nome_crescente(pacientes, opcao_ordenacao);
+                break;
+            case 4:
+                opcao_ordenacao = menu_ordenacao("Listagem de Pacientes");
+                listar_por_data_entrada_decrescente(pacientes, opcao_ordenacao);
+                break;
+            case 5:
+                opcao_ordenacao = menu_ordenacao("Listagem de Pacientes");
+                listar_por_medico_paciente_crescente(pacientes, opcao_ordenacao);
+                break;
             case 6: termina = 1; break;
             default: printf("Opcao invalida!\n");
         }
     }
+
+    free(pacientes);
 }
 
 void menu_buscar_pacientes() {
@@ -130,10 +152,8 @@ void menu_buscar_pacientes() {
     int termina = 0;
 
     while (!termina) {
-        limpar_buffer_entrada();
-        limpar_console();
+        //limpar_console();
         imprimir_titulo("Buscar Pacientes");
-
         int opcao_busca = 0;
         printf("1 - Buscar por nome\n");
         printf("2 - Buscar por CPF\n");
@@ -147,22 +167,33 @@ void menu_buscar_pacientes() {
             continue;
         }
 
-        int metodo_busca = menu_busca("Buscar Pacientes");
+        int metodo_busca = 0;
 
         switch (opcao_busca) {
-            case 1: buscar_por_nome(pacientes, metodo_busca); break;
-            case 2: buscar_por_cpf(pacientes, metodo_busca); break;
-            case 3: buscar_por_medico(pacientes, metodo_busca); break;
+            case 1:
+                metodo_busca = menu_busca("Buscar Pacientes");
+                buscar_por_nome(pacientes, metodo_busca);
+                break;
+            case 2:
+                metodo_busca = menu_busca("Buscar Pacientes");
+                buscar_por_cpf(pacientes, metodo_busca);
+                break;
+            case 3:
+                buscar_por_medico(pacientes);
+                break;
             case 4: termina = 1; break;
             default: printf("Opcao invalida!\n");
         }
     }
+
+    free(pacientes);
 }
 
 void menu_principal() {
     int termina = 0;
 
     while (!termina) {
+        limpar_console();
         imprimir_titulo("SCP - SISTEMA DE CADASTRO DE PACIENTES");
 
         int opcao_menu = 0;
