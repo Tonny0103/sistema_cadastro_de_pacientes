@@ -8,6 +8,7 @@
 #include "../include/listagem.h"
 #include "../include/paciente.h"
 #include "../include/utils.h"
+#include "../include/menu.h"
 
 void menu_cadastrar_paciente() {
     cadastrar_paciente();
@@ -146,10 +147,12 @@ void menu_buscar_pacientes() {
             continue;
         }
 
+        int metodo_busca = menu_busca("Buscar Pacientes");
+
         switch (opcao_busca) {
-            case 1: buscar_por_nome(pacientes); break;
-            case 2: buscar_por_cpf(pacientes); break;
-            case 3: buscar_por_medico(pacientes); break;
+            case 1: buscar_por_nome(pacientes, metodo_busca); break;
+            case 2: buscar_por_cpf(pacientes, metodo_busca); break;
+            case 3: buscar_por_medico(pacientes, metodo_busca); break;
             case 4: termina = 1; break;
             default: printf("Opcao invalida!\n");
         }
