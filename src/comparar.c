@@ -34,3 +34,7 @@ int comparar_medico_paciente_crescente(t_paciente a, t_paciente b) {
 
     return strcmp(chave_a, chave_b);
 }
+
+int comparar_cpf_paciente(t_paciente a, t_paciente b) {
+    return strcmp(a.cpf, b.cpf) == 0;
+}
